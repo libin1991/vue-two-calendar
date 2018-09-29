@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>vue-日历</title>
+</head>
+<link rel="stylesheet" href="css/public.css" />
+<link rel="stylesheet" href="css/calendar.css" />
+<body>
+<div id="app">
+	<m-calendar :child="date0"></m-calendar>
+	<m-calendar :child="date1"></m-calendar>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vue-calendar.js"></script>
+<script>
+kim=new Vue({
+	el:"#app",
+	data:{
+		date0:{
+			now:"2017-11-05",
+			end:"2017-11-25",
+			callback:function(d){
+				kim.date1.start=d;
+			}
+		},
+		date1:{
+			now:"2017-11-25",
+			start:"2017-11-05",
+			callback:function(d){
+				kim.date0.end=d;
+			}
+		}
+	}
+});
+</script>
+</body>
+</html>
